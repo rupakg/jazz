@@ -96,6 +96,12 @@
                                 <label for="cshell"><span class='outer'></span><span class="background"></span>C#</label>
                             </div>
                         </section>
+                        <section class="col-lg-3 col-md-3 pad-left0">
+                            <div class="radio-container">
+                                <input type="radio" name="runtime" id="ruby" [value]="ruby" [checked]="runtime == 'ruby'" (change)="onSelectionChange('ruby')">
+                                <label for="ruby"><span class='outer'></span><span class="background"></span>Ruby (2.5)</label>
+                            </div>
+                        </section>
                     </div>
                 </div>
             </div>

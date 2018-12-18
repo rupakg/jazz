@@ -414,6 +414,7 @@ describe('CreateServiceComponent', () => {
     expect(elementText).toContain("NodeJs".toLowerCase());
     expect(elementText).toContain("Java".toLocaleLowerCase());
     expect(elementText).toContain("Python".toLocaleLowerCase());
+    expect(elementText).toContain("Ruby".toLocaleLowerCase());
   });
   it('API should show Specific Field Accessiblity ', () => {
     component.changeServiceType('api');
@@ -536,6 +537,7 @@ describe('CreateServiceComponent', () => {
     expect(elementText).toContain("NodeJs".toLowerCase());
     expect(elementText).toContain("Java".toLocaleLowerCase());
     expect(elementText).toContain("Python".toLocaleLowerCase());
+    expect(elementText).toContain("Ruby".toLocaleLowerCase());
 
   });
   it('Lambda Function section should show Specific Field Event Shedule', () => {
