@@ -1,0 +1,3 @@
+providerRuntime : ruby2.5
+providerMemorySize : 256
+providerTimeout : 160
