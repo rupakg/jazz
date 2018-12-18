@@ -134,6 +134,8 @@ def cleanUpWorkspace() {
 		sh "mvn compile"
 	} else if (service_config['runtime'].indexOf("python") > -1) {
 		sh "rm -rf ./library"
+	} else if (service_config['runtime'].indexOf("ruby") > -1) {
+		sh "rm -rf ./vendor"
 	}
 }
 

@@ -1050,6 +1050,8 @@ def loadServerlessConfig() {
 		sh "cp _config/serverless-java.yml ./serverless.yml"
 	} else if (service_config['providerRuntime'].indexOf("python") > -1) {
 		sh "cp _config/serverless-python.yml ./serverless.yml"
+	} else if (service_config['providerRuntime'].indexOf("ruby") > -1) {
+		sh "cp _config/serverless-ruby.yml ./serverless.yml"
 	}
 
   if (service_config['event_source_dynamodb'] || service_config['event_source_sqs']) {

@@ -493,7 +493,10 @@ def buildLambda(runtime) {
 		. venv/bin/activate
 		pip install pytest
 		"""
-	}
+	} else if (runtime.indexOf("ruby") > -1) {
+		sh "bundle install"
+		sh "bundle install --deployment"
+  }
 }
 
 
@@ -579,7 +582,7 @@ def validateDeploymentConfigurations(def prop) {
 			error "Wrong configuration. Value for Key 'providerRuntime' is missing in the configuration"
 
 		} else {
-			def validRuntimes = ["nodejs4.3", "nodejs6.10", "nodejs8.10", "python2.7", "java8"]
+			def validRuntimes = ["nodejs4.3", "nodejs6.10", "nodejs8.10", "python2.7", "java8", "ruby2.5"]
 			def flag = false
 			for (int i = 0; i < validRuntimes.size(); i++) {
 				if (_runtime == validRuntimes[i]) {
@@ -655,7 +658,9 @@ def loadServerlessConfig(config) {
 		sh "cp _config/serverless-java.yml ./serverless.yml"
 	} else if (config['providerRuntime'].indexOf("python") > -1) {
 		sh "cp _config/serverless-python.yml ./serverless.yml"
-	}
+	} else if (config['providerRuntime'].indexOf("ruby") > -1) {
+    sh "cp _config/serverless-ruby.yml ./serverless.yml"
+  }
 
 	if ((config['service'] == 'cloud-logs-streamer' || config['service'] == 'logs') && config['domain'] == 'jazz') {
 		//addVpcDetails()
@@ -835,7 +840,9 @@ def runValidation(String runtime) {
 		sh "java -cp ${configLoader.CODE_QUALITY.SONAR.CHECKSTYLE_LIB} com.puppycrawl.tools.checkstyle.Main -c sun_checks.xml src"
 	} else if (runtime.indexOf("python") > -1) {
 		echo "running validations for $runtime"
-	}
+	} else if (runtime.indexOf("ruby") > -1) {
+    echo "running validations for $runtime"
+ 	}
 }
 
 /**
